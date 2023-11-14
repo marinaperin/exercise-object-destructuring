@@ -1,9 +1,8 @@
+// Exercise 1
 /*
     Dato il seguente oggetto in JavaScript, convertilo 
     in una stringa JSON.
 */
-
-// Exercise 1
 
 const utente1 = {
   nome: "Alice",
@@ -17,12 +16,12 @@ const utente1 = {
 
 const JSONString = JSON.stringify(utente1);
 
+
+// Exercise 2
 /*
     Converti la seguente stringa JSON in un oggetto JavaScript 
     e registra l'`email` e l'`id` nella console.
 */
-
-// Exercise 2
 
 const string = '{"id": 1, "nome": "John Doe", "email": "john.doe@example.com"}';
 
@@ -30,13 +29,13 @@ const obj = JSON.parse(string);
 
 console.log(obj.id, obj.email);
 
+
+// Exercise 3
 /*
     Utilizza la distrutturazione degli oggetti per estrarre
     il `titolo` e l'`anno` dal seguente oggetto e registrarli
     nella console.
 */
-
-// Exercise 3
 
 const film = {
   titolo: "Inception",
@@ -49,13 +48,13 @@ const { titolo, anno } = film;
 
 console.log(titolo, anno);
 
+
+// Exercise 4
 /*
     Utilizza la distrutturazione degli oggetti per estrarre
     la `via` e la `citta` dall'oggetto `indirizzo` all'interno
     dell'oggetto `utente`.
 */
-
-// Exercise 4
 
 const utente2 = {
   nome: "Alice",
@@ -69,13 +68,13 @@ const {
   indirizzo: { via, citta },
 } = utente2;
 
+
+// Exercise 5
 /*
     Utilizza la distrutturazione degli oggetti per estrarre
     il `nome` e l'`eta` dall'oggetto `persona`. Se l'`eta`
     non è fornita, dovrebbe avere un valore predefinito di `30`.
 */
-
-// Exercise 5
 
 const persona = {
   nome: "Bob",
@@ -85,13 +84,13 @@ const defaultAge = 30;
 
 const { nome, eta: eta = defaultAge } = persona;
 
+
+// Exercise 6
 /*
     Scrivi una funzione `presentati` che prende un oggetto
     con le proprietà `nome` e `occupazione` e registra un
     messaggio nella console.
 */
-
-// Exercise 6
 
 const person = {
   nome: "Jane",
@@ -102,6 +101,8 @@ const presentati = ({ nome, occupazione }) => {
   console.log(`Mi chiamo ${nome} e sono una ${occupazione}`);
 };
 
+
+// Bonus Exercise 1
 /*
     Hai ricevuto una risposta JSON da un database contenente 
     informazioni su libri e loro autori. Analizza il JSON e 
@@ -110,8 +111,6 @@ const presentati = ({ nome, occupazione }) => {
     titolo, nome e cognome dell'autore, e il numero di 
     pagine se il libro ne ha più di 300.
 */
-
-// Bonus Exercise 1
 
 const books = [
   {
@@ -162,6 +161,8 @@ for (let i = 0; i < books.length; i++) {
 
 console.log(registerBooks);
 
+
+// Bonus Exercise 2
 /*
     Dato il JSON degli utentis, scrivi una funzione che 
     distruttura ogni oggetto utente per estrarre il nome, 
@@ -170,8 +171,6 @@ console.log(registerBooks);
     predefinito di "Indirizzo non fornito". Registra le 
     informazioni estratte per ogni utente.
 */
-
-// Bonus Exercise 2
 
 const users = [
     {
@@ -202,6 +201,8 @@ const destructurer = (array)=> {
 
 console.log(destructurer(users));
 
+
+// Bonus Exercise 3
 /*
     Hai ricevuto una stringa JSON contenente un array
     di prodotti con i loro prezzi e quantità. Scrivi
@@ -212,8 +213,6 @@ console.log(destructurer(users));
     Quindi, registra il nome del prodotto e il suo 
     valore totale.
 */
-
-// Bonus Exercise 3
 
 const productsString = `
 [
