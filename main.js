@@ -83,7 +83,7 @@ const persona = {
 
 const defaultAge = 30;
 
-const { nome, eta: eta = defaultAge } = persona;
+const { nome, eta = defaultAge } = persona;
 
 /*
     Scrivi una funzione `presentati` che prende un oggetto
@@ -101,6 +101,8 @@ const person = {
 const presentati = ({ nome, occupazione }) => {
   console.log(`Mi chiamo ${nome} e sono una ${occupazione}`);
 };
+
+presentati(person);
 
 /*
     Hai ricevuto una risposta JSON da un database contenente 
@@ -149,18 +151,16 @@ const books = [
   },
 ];
 
-let registerBooks = '';
+
 for (let i = 0; i < books.length; i++) {
   const {
     title,
     author: { firstName, lastName },
     details: { pages },
   } = books[i];
-  registerBooks += `Title: ${title}, author: ${firstName} ${lastName}, 
-    ${pages > 300 ? 'pages: ' + pages : ""} `;
-};
-
-console.log(registerBooks);
+  let registerBooks = `Title: ${title}, author: ${firstName} ${lastName}${pages > 300 ? ", pages: " + pages : ""} `;
+  console.log(registerBooks);
+}
 
 /*
     Dato il JSON degli utentis, scrivi una funzione che 
@@ -173,7 +173,7 @@ console.log(registerBooks);
 
 // Bonus Exercise 2
 
-const users = [
+const usersString = `[
     {
         "name": "Alice",
         "email": "alice@example.com",
@@ -188,17 +188,19 @@ const users = [
         "email": "charlie@example.com",
         "address": "456 Via Olmo, Sognilandia"
     }
-];
+]`;
 
-const destructurer = (array)=> {
-    const defaultAddress = 'Address not inserted';
-    let info = '';
-    for (let i = 0; i < array.length; i++){
-        const {name, email, address: address = defaultAddress} = users[i];
-        info += `Name: ${name}, Email: ${email}, Address: ${address} `;
-    };
-    return info;
-}
+const users = JSON.parse(usersString);
+
+const destructurer = (array) => {
+  const defaultAddress = "Address not inserted";
+  let info = "";
+  for (let i = 0; i < array.length; i++) {
+    const { name, email, address = defaultAddress } = users[i];
+    info += `Name: ${name}, Email: ${email}, Address: ${address} `;
+  }
+  return info;
+};
 
 console.log(destructurer(users));
 
@@ -234,17 +236,14 @@ const productsString = `
     }
 ]`;
 
-const products = JSON.parse(productsString);
-
-const totalValue = (array) =>{
-  let prod = '';
-  let value = 0;
-  for (let i = 0; i < array.length; i++){
-    const {product, price, quantity} = array[i];
-    value = price * quantity;
-    prod += `${product} is worth ${value}€ `;
+const totalValue = (json) => {
+  const products = JSON.parse(json);
+  for (let i = 0; i < products.length; i++) {
+    const { product, price, quantity } = products[i];
+    const value = price * quantity;
+    const prod = `${product} is worth ${value}€ `;
+    console.log(prod);
   }
-  return prod;
 };
 
-console.log(totalValue(products));
+totalValue(productsString);
